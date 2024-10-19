@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Avatar, Drawer, IconButton, Paper, Stack} from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -7,9 +7,9 @@ import RobloxIcon from './assets/robloxIcon.svg';
 import RobuxIcon from './assets/robux_gold.svg';
 import MenuIcon from '@mui/icons-material/Menu';
 import ButtonDropdown from '../../components/ButtonDropdown';
-import avatarPrincipal from '../../img/avatar-principal.jpg';
 import './topbar.css';
 import { Sidebar } from '../sidebar/Sidebar';
+import { fetchUser } from '../../helpers/fetchUser';
 
 
 export const Topbar = () => {
@@ -31,6 +31,21 @@ export const Topbar = () => {
         }
       };
 
+      const [dataFetch, setDataFetch] = useState({
+        user:[],
+      })
+      const {user}= dataFetch;
+      const getFetch= async()=>{
+        const newUser = await fetchUser();    
+        setDataFetch({
+          user:newUser,
+        })
+      }
+    
+      useEffect(() => {
+        getFetch();
+      }, [])
+    
 
   return (
     <header className="topbar h-10 max-md:h-20 w-full z-50 bg-neutral-900 flex flex-row flex-wrap items-center justify-between text-base text-white font-semibold fixed">
@@ -101,10 +116,10 @@ export const Topbar = () => {
                 <div id="avatarTopBar" className='flex h-full w-fit flex-row items-center'>
                     <Avatar
                     sx={{ width: 28, height: 28, fontSize:"14px"}}
-                    src={avatarPrincipal}
-                    ></Avatar>
+                    src={user[0]?.image || ''}
+                    >?</Avatar>
                     <div className='flex flex-row items-center'>
-                        <p className="font-medium text-white text-xs pl-2 hover:underline max-lg:hidden">SV_HPPY </p>
+                        <p className="font-medium text-white text-xs pl-2 hover:underline max-lg:hidden">{user[0]?.name||null}</p>
                         <span style={{fontSize:'10px'}} className='text-xsmall font-medium text-stone-500 ml-[4px]'>+13</span>
                     </div>
                    

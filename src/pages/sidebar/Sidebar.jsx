@@ -1,6 +1,5 @@
+import { useEffect, useState } from "react";
 import { Avatar, List, ListItem, ListItemAvatar } from "@mui/material"
-//avatar
-import avatarPrincipal from '../../img/avatar-principal.jpg'
 //icons
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PermIdentityIcon from '@mui/icons-material/PermIdentity';
@@ -13,19 +12,36 @@ import AdUnitsOutlinedIcon from '@mui/icons-material/AdUnitsOutlined';
 import AvatarIcon from './assets/avatar.svg';
 import BlogIcon from './assets/blog.svg';
 import TradeIcon from './assets/trade.svg';
+import {fetchUser} from '../../helpers/fetchUser';
 
 
 
 export const Sidebar = () => {
+
+  const [dataFetch, setDataFetch] = useState({
+    user:[],
+  })
+  const {user}= dataFetch;
+  const getFetch= async()=>{
+    const newUser = await fetchUser();    
+    setDataFetch({
+      user:newUser,
+    })
+  }
+
+  useEffect(() => {
+    getFetch();
+  }, [])
+
   return (
     <nav className="h-full w-4/8 justify-start flex-none text-lg bg-neutral-900 fixed top-10 max-md:top-20 overflow-x-auto">
         <List>
             <ListItemAvatar className="p-3 flex flex-row pb-2">
             <Avatar 
             sx={{ width: 24, height: 24, fontSize:"10px"}}
-            src={avatarPrincipal}
-            >H</Avatar>
-            <p className="font-semibold text-white text-base pl-2">SV_HPPY</p>
+            src={user[0]?.image ||''}
+            >?</Avatar>
+            <p className="font-semibold text-white text-base pl-2">{user[0]?.name ||null}</p>
             </ListItemAvatar>
         </List>
         <hr className=" border-zinc-600 py-1 w-4/5 m-auto"/>
