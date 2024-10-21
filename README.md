@@ -1,8 +1,21 @@
-# React + Vite
+# pasos a seguir para instalar el proyecto:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. accede a la terminal con Crtl + J y escribe "npm install" (sin las dobles comillar por si acaso).
 
-Currently, two official plugins are available:
+2. Colocar la base de datos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    2.1. Abrir xampp y darle a start a Apache y MySQL.
+    2.2. Entrar a este link http://localhost/phpmyadmin/index.php?route=/server/databases y crear una base de datos con el nombre de "roblox".
+    2.3. Darle click a Importar en la barra de superior.
+    2.4. En "Buscar en su Ordenador" coloca el archivo roblox.sql que esta en la carpeta Database.
+    2.5. Darle click a Importar.
+
+3. entra a la carpeta "Database" copia la carpeta "PhProblox" y colocala en [carpeta donde instalaste xampp]/htdocs.
+
+4. accede a la terminal con Crtl + J y escribe "npm run dev".
+
+# Para el uso en cualquier momento del proyecto
+
+1. Abrir xampp y darle a start a Apache y MySQL/
+
+2. accede a la terminal con Crtl + J y escribe "npm run dev".
