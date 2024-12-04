@@ -50,7 +50,7 @@ export default function ButtonDropdown({children,menuItems,transparent,style,cla
           'aria-labelledby': 'basic-button',
         }}
       >
-        {menuItems.map((item,i)=>(<MenuItem key={i} onClick={handleClose}>{item}</MenuItem>))}
+        {menuItems.map((item,i)=>(<MenuItem key={i} onClick={item[1]||handleClose}>{item[0]}</MenuItem>))}
       </Menu>
       }
     </div>

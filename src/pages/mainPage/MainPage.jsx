@@ -66,7 +66,7 @@ export const MainPage = () => {
                     key={data.name}
                     transparent={false}
                     className='grid-item'
-                    menuItems={[`Chat with ${data.name}`,'View Profile']}
+                    menuItems={[[`Chat with ${data.name}`],['View Profile']]}
                     >
                     <div className="flex flex-col w-fit items-center justify-center mt-[10px]">
                         <img src={data.image} alt={data.name} className="w-24 h-24 max-md:w-21 max-md:h-21 rounded-full mb-[5px]"/>

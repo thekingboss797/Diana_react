@@ -10,11 +10,14 @@ import ButtonDropdown from '../../components/ButtonDropdown';
 import './topbar.css';
 import { Sidebar } from '../sidebar/Sidebar';
 import { fetchUser } from '../../helpers/fetchUser';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Topbar = () => {
     const [isSidebar, setIsSidebar] = useState(false)
     const [isSidebarMobile, setIsSidebarMobile] = useState(false)
+
+    const navigate = useNavigate();
 
     const toggleSidebarClose=()=>{
         setIsSidebar(true)
@@ -138,7 +141,7 @@ export const Topbar = () => {
                 {/* robux */}
                 <div className='h-full flex flex-row items-center w-1/4 text-xl font-medium'>
                     <ButtonDropdown
-                    menuItems={['Buy Robux','My Transactions','Redeem Roblox Codes']}
+                    menuItems={[['Buy Robux'],['My Transactions'],['Redeem Roblox Codes']]}
                     style={{paddingRight:0,paddingLeft:0}}
                     transparent
                     >
@@ -150,7 +153,7 @@ export const Topbar = () => {
                 <div id="settings" className=' w-1/4'>
                     <ButtonDropdown
                     style={{paddingRight:0,paddingLeft:0}}
-                    menuItems={['Settings','Quick Sign In','Help & Safety','Switch Account','Logout']}
+                    menuItems={[['Settings',()=>navigate('/settings')],['Quick Sign In'],['Help & Safety'],['Switch Account'],['Logout']]}
                     transparent
                     >
                         <SettingsOutlinedIcon sx={{width:'28px',height:"28px"}}/>
