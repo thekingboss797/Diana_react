@@ -1,5 +1,5 @@
-export const fetchFriends = async()=>{
-    const url = 'http://localhost/PhProblox/friends.php';
+export const fetchFriends = async(id)=>{
+    const url = `http://localhost/PhProblox/friends.php?id=${id}`;
     try {
         const res = await fetch(url);
         const data = await res.json();

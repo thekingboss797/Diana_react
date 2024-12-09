@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { Avatar, Drawer, IconButton, Paper, Stack} from '@mui/material';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -9,14 +9,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ButtonDropdown from '../../components/ButtonDropdown';
 import './topbar.css';
 import { Sidebar } from '../sidebar/Sidebar';
-import { fetchUser } from '../../helpers/fetchUser';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../useContext/user/UserContext';
 
 
 export const Topbar = () => {
     const [isSidebar, setIsSidebar] = useState(false)
     const [isSidebarMobile, setIsSidebarMobile] = useState(false)
 
+    const {user} = useContext(UserContext);
     const navigate = useNavigate();
 
     const toggleSidebarClose=()=>{
@@ -33,21 +34,6 @@ export const Topbar = () => {
             setIsSidebarMobile(!isSidebarMobile);
         }
       };
-
-      const [dataFetch, setDataFetch] = useState({
-        user:[],
-      })
-      const {user}= dataFetch;
-      const getFetch= async()=>{
-        const newUser = await fetchUser();    
-        setDataFetch({
-          user:newUser,
-        })
-      }
-    
-      useEffect(() => {
-        getFetch();
-      }, [])
     
 
   return (
@@ -119,10 +105,10 @@ export const Topbar = () => {
                 <div id="avatarTopBar" className='flex h-full w-fit flex-row items-center'>
                     <Avatar
                     sx={{ width: 28, height: 28, fontSize:"14px"}}
-                    src={user[0]?.image || ''}
+                    src={user.image}
                     >?</Avatar>
                     <div className='flex flex-row items-center'>
-                        <p className="font-medium text-white text-xs pl-2 hover:underline max-lg:hidden">{user[0]?.name||null}</p>
+                        <p className="font-medium text-white text-xs pl-2 hover:underline max-lg:hidden">{user.name}</p>
                         <span style={{fontSize:'10px'}} className='text-xsmall font-medium text-stone-500 ml-[4px]'>+13</span>
                     </div>
                    
@@ -153,7 +139,7 @@ export const Topbar = () => {
                 <div id="settings" className=' w-1/4'>
                     <ButtonDropdown
                     style={{paddingRight:0,paddingLeft:0}}
-                    menuItems={[['Settings',()=>navigate('/settings')],['Quick Sign In'],['Help & Safety'],['Switch Account'],['Logout']]}
+                    menuItems={[['Settings',()=>navigate('/settings')],['Quick Sign In'],['Help & Safety'],['Switch Account'],['Logout',()=>navigate('/login')]]}
                     transparent
                     >
                         <SettingsOutlinedIcon sx={{width:'28px',height:"28px"}}/>
