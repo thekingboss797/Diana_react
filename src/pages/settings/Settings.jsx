@@ -1,21 +1,10 @@
 import { Box, ListItemButton, Typography } from "@mui/material"
 import List from '@mui/material/List';
-import { useEffect, useState } from "react";
-import { fetchUser } from "../../helpers/fetchUser";
+import { useContext } from "react";
+import { UserContext } from "../../useContext/user/UserContext";
 
 export const Settings = () => {
-    const [dataFetch, setDataFetch] = useState({
-        user:{},
-      })
-      const getFetch= async()=>{
-        const newUser = await fetchUser();    
-        setDataFetch({...newUser[0]})
-      }
-    
-      useEffect(() => {
-        getFetch();
-      }, [])
-      console.log(dataFetch)
+    const {user} = useContext(UserContext);
   return (
     <div className="w-full mt-[16px] text-white ">
         <Box width={"900px"} margin={'auto'}>
@@ -35,9 +24,9 @@ export const Settings = () => {
                 </div>
                 <div className="pl-3 flex flex-col gap-2 pt-4">
                     <h4 className="font-bold text-2xl">Account Info</h4>
-                    <p className="text-lg">Display Name: <span className="font-semibold">{dataFetch.name}</span></p>
-                    <p className="text-lg">Username: <span className="font-semibold">{dataFetch.name}</span></p>
-                    <p className="text-lg">Email Address: <span className="font-semibold">{dataFetch.email}</span></p>
+                    <p className="text-lg">Display Name: <span className="font-semibold">{user.name}</span></p>
+                    <p className="text-lg">Username: <span className="font-semibold">{user.name}</span></p>
+                    <p className="text-lg">Email Address: <span className="font-semibold">{user.email}</span></p>
                     <p className="text-lg">Password: <span className="font-semibold">******</span></p>
                     <p className="text-lg">Birth: <span className="font-semibold"></span></p>
                 </div>
