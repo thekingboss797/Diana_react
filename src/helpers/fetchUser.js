@@ -1,7 +1,13 @@
-export const fetchUser = async()=>{
-    const url = 'http://localhost/PhProblox/user.php';
+export const fetchUser = async(body)=>{
+    const url = 'http://localhost/PhProblox/login.php';
     try {
-        const res = await fetch(url);
+        const res = await fetch(url,{
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(body)
+        });
         
         return await res.json();
     } catch (e) {

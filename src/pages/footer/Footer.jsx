@@ -1,10 +1,10 @@
 
-export const Footer = () => {
+export const Footer = ({main}) => {
 const nav = ['About Us', 'Jobs', 'Blog', 'parents', 'Gift Cards', 'Help', 'Terms', 'Accecibility', 'Privacy']
 
   return (
     <>
-        <footer className="footer bg-zinc-800 ml-[162px] text-white max-2xl:ml-[0px] px-4 py-8">
+        <footer className={`footer bg-zinc-800 max-2xl:ml-[0px] text-white ${main?'ml-[162px]':''} px-4 py-8`}>
         <div className="mx-auto flex flex-col md:flex-row justify-center items-center">
             <div className="footer-nav flex flex-row font-bold text-lg mb-[30px] flex-wrap justify-center items-center space-x-6">
                 {nav.map((name)=>(
