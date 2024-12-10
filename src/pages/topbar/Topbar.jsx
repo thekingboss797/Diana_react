@@ -41,7 +41,7 @@ export const Topbar = () => {
         {/* logo */}
         <div className="item-topbar-logo w-1/12 p-1 h-full items-center flex flex-row max-md:justify-start justify-stretch">
             <div>
-                <IconButton onClick={()=>handleDrawerToggle(true)} edge='start' sx={{color:'#ffffff', display: { xl: 'none' } }}><MenuIcon/></IconButton>
+                <IconButton onClick={()=>handleDrawerToggle(true)} edge='center' sx={{color:'#ffffff', display: { xl: 'none' } }}><MenuIcon/></IconButton>
                 <Drawer 
                 variant="temporary"
                 open={isSidebarMobile}
@@ -72,7 +72,7 @@ export const Topbar = () => {
                     <Sidebar/>
                 </Drawer>
             </div>
-            <img className='logo h-3/4 fill cursor-pointer' src={RobloxIcon} alt="Roblox logo"/>
+            <img className='logo h-5/6 fill cursor-pointer' src={RobloxIcon} alt="Roblox logo"/>
         </div>
         {/* nav */}
         <Stack direction='row' className="item-topbar-nav w-4/12 h-full -ml-[70px] max-md:m-[0] leading-10 items-stretch justify-center">
@@ -125,10 +125,10 @@ export const Topbar = () => {
                     
                 </div>
                 {/* robux */}
-                <div className='h-full flex flex-row items-center w-1/4 text-xl font-medium'>
+                <div className='h-full flex flex-row gap-1 items-center w-1/4 text-xl font-medium'>
                     <ButtonDropdown
                     menuItems={[['Buy Robux'],['My Transactions'],['Redeem Roblox Codes']]}
-                    style={{paddingRight:0,paddingLeft:0}}
+                    style={{paddingRight:0,paddingLeft:0,gap: '0.25rem'}}
                     transparent
                     >
                         <img src={RobuxIcon} alt="Robux Coin" className='w-7 h-7'/>
