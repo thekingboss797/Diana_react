@@ -51,8 +51,8 @@ export const Login = () => {
                     <h4 className="text-3xl font-bold mb-[16px]">Iniciar sesión en Roblox</h4>
                     <input type="text" name="email" id="email" value={data.email} placeholder="Correo" onChange={onChangeValue} className="pl-2 py-1 rounded-lg mb-[16px] bg-zinc-950" required/>
                     <input type="password" name="password" id="password" value={data.password} placeholder="Contraseña" onChange={onChangeValue} className="pl-2 py-1 rounded-lg mb-[16px] bg-zinc-950" required/>
-                    <input type="submit" value="Iniciar Sesión" className="border-white border rounded-lg font-semibold text-lg py-1 mb-[16px]"/>               
                     <span id='validation' className=' relative -top-3 text-xs text-red-500 hidden'>Correo o Contraseña incorrecta</span>
+                    <input type="submit" value="Iniciar Sesión" className="border-white border rounded-lg font-semibold text-lg py-1 mb-[16px]"/>               
                      
                     <Divider className="bg-zinc-200"/>
                     <p className="mt-[16px]">¿No tienes una cuenta de Roblox? <Link className="hover:underline font-semibold" >Regístrate</Link></p>

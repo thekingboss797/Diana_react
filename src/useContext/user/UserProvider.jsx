@@ -5,7 +5,7 @@ import Cookies from "universal-cookie";
 
 export const UserProvider = ({children}) => {
   const cookie = new Cookies();
-  const [user, setUser] = useState(cookie.get('roblo')?cookie.get('roblo'):null);
+  const [user, setUser] = useState(cookie.get('roblo')?cookie.get('roblo'):{});
   return (
     <UserContext.Provider value={{setUser,user}}>
         {children}

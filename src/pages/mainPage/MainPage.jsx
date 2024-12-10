@@ -24,7 +24,6 @@ export const MainPage = () => {
       isLoading:true,
     })
     const newFriend = await fetchFriends(user.Id);
-    console.log(newFriend)
     const newRecommend = await fetchRecommendedForYou();
     setDataFetch({
       friend:newFriend,
